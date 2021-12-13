@@ -1,0 +1,62 @@
+<%- include ('partials/_header') %>
+<%- include ('intro') %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="title" placeholder="Insertar titulo">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="author" placeholder="Insertar nombre de autor">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="section" placeholder="Insertar seccion. Por ejemplo: Drama">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" class="form-control" placeholder="Insertar una breve descripcion"></textarea>    
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" col="60" rows="15" type="text" name="content" placeholder="Insertar contenido de la novela"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"> Publicar </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Autor</th>
+                        <th>Titulo</th>
+                        <th>Seccion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < novela.length; i++){ %>
+                        <tr>
+                             <td> <%= i + 1 %> </td>
+                             <td> <%= novela[i].author %> </td>
+                             <td> <%= novela[i].title %> </td>
+                             <td> <%= novela[i].section %></td>
+                             <td> <a href="/verNovela/<%= novela[i]._id %>" class="btn btn-primary">ver</a> </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>    
+
+
+
+<%- include ('partials/_footerBody') %> 
+<%- include ('partials/_footer') %> 
